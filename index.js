@@ -10,43 +10,34 @@ function computerPlay() {
   return pcChoices[Math.floor(Math.random() * pcChoices.length)];
 }
 
-const computerSelection = computerPlay();
-
 const playerPlay = prompt("Rock, Scissors, Paper?", "🤘 ✂ 🧻"); //Player inputs a selection via prompt
 
-console.log(computerPlay);
-console.log(playerPlay);
-
 function oneRound(playerSelection, computerSelection) {
-  playerSelection = playerPlay;
+  
+  const choices = ["rock", "scissors", "paper"];
+  const bothSelections = [playerSelection, computerSelection];
   const input = playerSelection.toLowerCase();
-  const choices = ["rock" || "scissors" || "paper"];
+  const playerWins = [["rock", "scissors"], ["scissors", "paper"], ["paper", "rock"]];
+  console.log(bothSelections);
+  const playerWinMatch = playerWins.find((element) => {bothSelections === element});   //DEBUG.  
+  console.log(playerWinMatch);
+  const checkPlayerInput = choices.find((element) => input === element); 
 
-  if (input !== choices) {
-    return alert('Please type "rock", "scissors", or "paper"');
-  } else if (
-    (playerSelection,
-    computerSelection === ["rock", "scissors"] || ["scissors", "paper"] || [
-        "paper",
-        "rock",
-      ])
-  ) {
-    return alert("Good job!  You beat the computer!");
-  } else if (
-    (playerSelection,
-    computerSelection === ["rock", "paper"] || ["scissors", "rock"] || [
-        "paper",
-        "scissors",
-      ])
-  ) {
-    return alert("You lost!  Try again!");
-  } else
-    playerSelection,
-      computerSelection === ["rock", "rock"] || ["scissors", "scissors"] || [
-          "paper",
-          "paper",
-        ];
-  return alert("You tied! Try again!");
+  //Check if player input is valid.  
+  if (checkPlayerInput === undefined) return alert("Please type rock, scissors, paper.");
+
+  // Player and computer tie.
+  if (playerSelection === computerSelection) return alert("ITS A TIE.");
+
+  //Player wins match.  
+  if (playerWinMatch !== undefined) return alert("Good job!  You beat the computer!");
+  
+  //Computer wins match.
+  return alert("You suck computer wins.")  
 }
 
-console.log(oneRound("", computerSelection));
+console.log(playerPlay);
+oneRound(playerPlay, computerPlay());  
+
+
+
