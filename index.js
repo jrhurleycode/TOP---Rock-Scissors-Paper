@@ -1,43 +1,100 @@
-//Computer selects rock, paper, scissors
-//Player types rock, paper, scissors.  Word is made lowerCase
-//Compare selections
-//Rock > scissors,  Scissors > paper,  Paper > rock
-//Show winner
+let playerScore = 0;
+let computerScore = 0;
+const rock = "rock";
+const paper = "paper";
+const scissors = "scissors";
 
 //Computer makes a random selection
 function computerPlay() {
-  const pcChoices = ["rock", "scissors", "paper"];
+  const pcChoices = [rock, paper, scissors];
   return pcChoices[Math.floor(Math.random() * pcChoices.length)];
 }
 
-const playerPlay = prompt("Rock, Scissors, Paper?", "🤘 ✂ 🧻"); //Player inputs a selection via prompt
-
 function oneRound(playerSelection, computerSelection) {
   
-  const choices = ["rock", "scissors", "paper"];
-  const bothSelections = [playerSelection, computerSelection];
-  const input = playerSelection.toLowerCase();
-  const playerWins = [["rock", "scissors"], ["scissors", "paper"], ["paper", "rock"]];
-  console.log(bothSelections);
-  const playerWinMatch = playerWins.find((element) => {bothSelections === element});   //DEBUG.  
-  console.log(playerWinMatch);
-  const checkPlayerInput = choices.find((element) => input === element); 
-
-  //Check if player input is valid.  
-  if (checkPlayerInput === undefined) return alert("Please type rock, scissors, paper.");
-
-  // Player and computer tie.
-  if (playerSelection === computerSelection) return alert("ITS A TIE.");
-
-  //Player wins match.  
-  if (playerWinMatch !== undefined) return alert("Good job!  You beat the computer!");
+  //Player inputs a selection via prompt.  
+  const playerPlay = prompt("Rock, Scissors, Paper?", "🤘 ✂ 🧻");   
   
-  //Computer wins match.
-  return alert("You suck computer wins.")  
+  let input = playerPlay.toLowerCase();
+  playerSelection = input;
+  computerSelection = computerPlay();
+  const choices = [rock, paper, scissors];
+  let selections = [playerSelection, computerSelection];
+  
+  
+  //Player wins round. +1 to score
+  if ( (selections.at(0) === ("rock"))
+      && (selections.at(1) === ("scissors")))
+      { playerScore += 1
+          console.log("Player selected: " + playerSelection)
+          console.log("Computer selected: " + computerSelection)
+          console.log("******Good job.  You beat the computer.******")
+          console.log("Player Score: " + playerScore, "Computer Score: " + computerScore)
+          console.log("------------------------------------------------")};
+  
+  if ((selections.at(0) === ("paper"))
+      && (selections.at(1) === ("rock"))) 
+      { playerScore += 1
+        console.log("Player selected: " + playerSelection)
+        console.log("Computer selected: " + computerSelection)
+        console.log("******Good job.  You beat the computer.******")
+        console.log("Player Score: " + playerScore, "Computer Score: " + computerScore)
+        console.log("------------------------------------------------")};
+  
+  if ((selections.at(0) === ("scissors")) 
+      && (selections.at(1) === ("paper"))) 
+      { playerScore += 1
+        console.log("Player selected: " + playerSelection);
+        console.log("Computer selected: " + computerSelection);
+        console.log("******Good job.  You beat the computer.******")
+        console.log("Player Score: " + playerScore, "Computer Score: " + computerScore)
+        console.log("------------------------------------------------")};
+  
+  //Computer wins round.  +1 to score.
+  if ((selections.at(0) === ("rock")) 
+      && (selections.at(1) === ("paper"))) 
+      { computerScore += 1
+        console.log("Player selected: " + playerSelection)
+        console.log("Computer selected: " + computerSelection)
+        console.log("******Sorry, you lost.  Try again.******")
+        console.log("Player Score: " + playerScore, "Computer Score: " + computerScore)
+        console.log("------------------------------------------------")};
+  
+  if ((selections.at(0) === ("paper")) 
+      && (selections.at(1) === ("scissors"))) 
+      { computerScore += 1
+        console.log("Player selected: " + playerSelection)
+        console.log("Computer selected: " + computerSelection)
+        console.log("******Sorry, you lost.  Try again.******")
+        console.log("Player Score: " + playerScore, "Computer Score: " + computerScore)
+        console.log("------------------------------------------------")};
+  
+  if ((selections.at(0) === ("scissors")) 
+      && (selections.at(1) === ("rock"))) 
+      { computerScore += 1
+        console.log("Player selected: " + playerSelection)
+        console.log("Computer selected: " + computerSelection)
+        console.log("******Sorry, you lost.  Try again.******")
+        console.log("Player Score: " + playerScore, "Computer Score: " + computerScore)
+         console.log("------------------------------------------------")};
+  
+//Player and Computer tie.  No points given.
+  if (playerSelection === computerSelection) {
+    console.log("Player selected: " + playerSelection)
+    console.log("Computer selected: " + computerSelection)
+    console.log("******Its a tie! Try again.******") 
+    console.log("Player Score: " + playerScore)
+    console.log("Computer Score: " + computerScore)
+    console.log("------------------------------------------------")};
+                         
 }
 
-console.log(playerPlay);
-oneRound(playerPlay, computerPlay());  
 
 
+function game () {
+  for(i = 0; i < 5; i++) {
+    oneRound();
+  }
+}
 
+game();
