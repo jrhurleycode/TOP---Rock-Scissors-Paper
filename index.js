@@ -13,18 +13,16 @@ function computerPlay() {
 function oneRound(playerSelection, computerSelection) {
   
   //Player inputs a selection via prompt.  
-  const playerPlay = prompt("Rock, Scissors, Paper?", "🤘 ✂ 🧻");   
-  
-  let input = playerPlay.toLowerCase();
-  playerSelection = input;
-  computerSelection = computerPlay();
+  const playerPlay = prompt("Rock, Scissors, Paper?", "🤘 ✂ 🧻");   //Change prompt to addEventListner 'click'  
   const choices = [rock, paper, scissors];
+  let input = playerPlay.toLowerCase();  //delete?  not typing in selection  
   let selections = [playerSelection, computerSelection];
-  
+
+  playerSelection = input;     //playerSelection = playerPlay?
+  computerSelection = computerPlay(); 
   
   //Player wins round. +1 to score
-  if ( (selections.at(0) === ("rock"))
-      && (selections.at(1) === ("scissors")))
+  if ((selections.at(0) === ("rock")) && (selections.at(1) === ("scissors")))
       { playerScore += 1
           console.log("Player selected: " + playerSelection)
           console.log("Computer selected: " + computerSelection)
@@ -32,8 +30,7 @@ function oneRound(playerSelection, computerSelection) {
           console.log("Player Score: " + playerScore, "Computer Score: " + computerScore)
           console.log("------------------------------------------------")};
   
-  if ((selections.at(0) === ("paper"))
-      && (selections.at(1) === ("rock"))) 
+  if ((selections.at(0) === ("paper")) && (selections.at(1) === ("rock"))) 
       { playerScore += 1
         console.log("Player selected: " + playerSelection)
         console.log("Computer selected: " + computerSelection)
@@ -41,8 +38,7 @@ function oneRound(playerSelection, computerSelection) {
         console.log("Player Score: " + playerScore, "Computer Score: " + computerScore)
         console.log("------------------------------------------------")};
   
-  if ((selections.at(0) === ("scissors")) 
-      && (selections.at(1) === ("paper"))) 
+  if ((selections.at(0) === ("scissors")) && (selections.at(1) === ("paper"))) 
       { playerScore += 1
         console.log("Player selected: " + playerSelection);
         console.log("Computer selected: " + computerSelection);
@@ -51,8 +47,7 @@ function oneRound(playerSelection, computerSelection) {
         console.log("------------------------------------------------")};
   
   //Computer wins round.  +1 to score.
-  if ((selections.at(0) === ("rock")) 
-      && (selections.at(1) === ("paper"))) 
+  if ((selections.at(0) === ("rock")) && (selections.at(1) === ("paper"))) 
       { computerScore += 1
         console.log("Player selected: " + playerSelection)
         console.log("Computer selected: " + computerSelection)
@@ -60,8 +55,7 @@ function oneRound(playerSelection, computerSelection) {
         console.log("Player Score: " + playerScore, "Computer Score: " + computerScore)
         console.log("------------------------------------------------")};
   
-  if ((selections.at(0) === ("paper")) 
-      && (selections.at(1) === ("scissors"))) 
+  if ((selections.at(0) === ("paper")) && (selections.at(1) === ("scissors"))) 
       { computerScore += 1
         console.log("Player selected: " + playerSelection)
         console.log("Computer selected: " + computerSelection)
@@ -69,8 +63,7 @@ function oneRound(playerSelection, computerSelection) {
         console.log("Player Score: " + playerScore, "Computer Score: " + computerScore)
         console.log("------------------------------------------------")};
   
-  if ((selections.at(0) === ("scissors")) 
-      && (selections.at(1) === ("rock"))) 
+  if ((selections.at(0) === ("scissors")) && (selections.at(1) === ("rock"))) 
       { computerScore += 1
         console.log("Player selected: " + playerSelection)
         console.log("Computer selected: " + computerSelection)
@@ -91,10 +84,10 @@ function oneRound(playerSelection, computerSelection) {
 
 
 
-function game () {
-  for(i = 0; i < 5; i++) {
-    oneRound();
-  }
-}
+// function game () {
+//   for(i = 0; i < 5; i++) {
+//     oneRound();
+//   }
+// }
 
-game();
+// game();
