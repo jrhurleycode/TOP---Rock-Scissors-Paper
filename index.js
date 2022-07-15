@@ -10,16 +10,18 @@ function computerPlay() {
   return pcChoices[Math.floor(Math.random() * pcChoices.length)];
 }
 
-function oneRound(playerSelection, computerSelection) {
-  //Player inputs a selection via prompt.
-  const playerPlay = prompt("Rock, Scissors, Paper?", "🤘 ✂ 🧻");
+const playerInput = document.getElementById('')
 
-  let input = playerPlay.toLowerCase();
-  playerSelection = input;
-  computerSelection = computerPlay();
+function oneRound(playerSelection, computerSelection) {
+
+  //Player inputs a selection via prompt.
+  //const playerPlay = prompt("Rock, Scissors, Paper?", "🤘 ✂ 🧻");  //playerSelection should be based on click. 
+  //let input = playerPlay.toLowerCase();
   const choices = [rock, paper, scissors];
   let selections = [playerSelection, computerSelection];
-
+  playerSelection = document.getElementById('')
+  computerSelection = computerPlay();
+  
   //Player wins round. +1 to score
   if (selections.at(0) === "rock" && selections.at(1) === "scissors") {
     playerScore += 1;
