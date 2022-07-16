@@ -1,5 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
+let rounds = 0;
+let input = "";
 const rock = "rock";
 const paper = "paper";
 const scissors = "scissors";
@@ -10,112 +12,86 @@ function computerPlay() {
   return pcChoices[Math.floor(Math.random() * pcChoices.length)];
 }
 
-const playerInput = document.getElementById('')
-
+//One round.
 function oneRound(playerSelection, computerSelection) {
-
-  //Player inputs a selection via prompt.
-  //const playerPlay = prompt("Rock, Scissors, Paper?", "🤘 ✂ 🧻");  //playerSelection should be based on click. 
-  //let input = playerPlay.toLowerCase();
-  const choices = [rock, paper, scissors];
-  let selections = [playerSelection, computerSelection];
-  playerSelection = document.getElementById('')
+  playerSelection = input;
   computerSelection = computerPlay();
-  
+  let selections = [playerSelection, computerSelection];
+
+  //New lines
+  const container = document.querySelector(".container");
+  let lineOne = container.querySelector("#resultsPlayer");
+  let lineTwo = container.querySelector("#resultsComputer");
+  let lineThree = container.querySelector("#scorePlayer");
+  let lineFour = container.querySelector("#scoreComputer");
+  let lineFive = container.querySelector("#message");
+
+  //Removes default text
+  lineOne.textContent = "Player selected: " + playerSelection;
+  lineTwo.textContent = "Computer selected: " + computerSelection;
+  lineThree.textContent = "Player score: " + playerScore;
+  lineFour.textContent = "Computer score: " + computerScore;
+  lineFive.textContent = "";
+
   //Player wins round. +1 to score
   if (selections.at(0) === "rock" && selections.at(1) === "scissors") {
     playerScore += 1;
-    console.log("Player selected: " + playerSelection);
-    console.log("Computer selected: " + computerSelection);
-    console.log("******Good job.  You beat the computer.******");
-    console.log(
-      "Player Score: " + playerScore,
-      "Computer Score: " + computerScore
-    );
-    console.log("------------------------------------------------");
+    lineFive.textContent = "******Good job.  You beat the computer.******";
   }
 
   if (selections.at(0) === "paper" && selections.at(1) === "rock") {
     playerScore += 1;
-    console.log("Player selected: " + playerSelection);
-    console.log("Computer selected: " + computerSelection);
-    console.log("******Good job.  You beat the computer.******");
-    console.log(
-      "Player Score: " + playerScore,
-      "Computer Score: " + computerScore
-    );
-    console.log("------------------------------------------------");
+    lineFive.textContent = "******Good job.  You beat the computer.******";
   }
 
   if (selections.at(0) === "scissors" && selections.at(1) === "paper") {
     playerScore += 1;
-    console.log("Player selected: " + playerSelection);
-    console.log("Computer selected: " + computerSelection);
-    console.log("******Good job.  You beat the computer.******");
-    console.log(
-      "Player Score: " + playerScore,
-      "Computer Score: " + computerScore
-    );
-    console.log("------------------------------------------------");
+    lineFive.textContent = "******Good job.  You beat the computer.******";
   }
 
   //Computer wins round.  +1 to score.
   if (selections.at(0) === "rock" && selections.at(1) === "paper") {
     computerScore += 1;
-    console.log("Player selected: " + playerSelection);
-    console.log("Computer selected: " + computerSelection);
-    console.log("******Sorry, you lost.  Try again.******");
-    console.log(
-      "Player Score: " + playerScore,
-      "Computer Score: " + computerScore
-    );
-    console.log("------------------------------------------------");
+    lineFive.textContent = "******Sorry, the computer won this round.******";
   }
 
   if (selections.at(0) === "paper" && selections.at(1) === "scissors") {
     computerScore += 1;
-    console.log("Player selected: " + playerSelection);
-    console.log("Computer selected: " + computerSelection);
-    console.log("******Sorry, you lost.  Try again.******");
-    console.log(
-      "Player Score: " + playerScore,
-      "Computer Score: " + computerScore
-    );
-    console.log("------------------------------------------------");
+    lineFive.textContent = "******Sorry, the computer won this round.******";
   }
 
   if (selections.at(0) === "scissors" && selections.at(1) === "rock") {
     computerScore += 1;
-    console.log("Player selected: " + playerSelection);
-    console.log("Computer selected: " + computerSelection);
-    console.log("******Sorry, you lost.  Try again.******");
-    console.log(
-      "Player Score: " + playerScore,
-      "Computer Score: " + computerScore
-    );
-    console.log("------------------------------------------------");
+    lineFive.textContent = "******Sorry, the computer won this round.******";
   }
 
   //Player and Computer tie.  No points given.
   if (playerSelection === computerSelection) {
-    console.log("Player selected: " + playerSelection);
-    console.log("Computer selected: " + computerSelection);
-    console.log("******Its a tie! Try again.******");
-    console.log("Player Score: " + playerScore);
-    console.log("Computer Score: " + computerScore);
-    console.log("------------------------------------------------");
+    lineFive.textContent = "******Its a tie! Try again.******";
   }
 }
 
-// function game () {
-//   for(i = 0; i < 5; i++) {
-//     oneRound();
-//   }
+// function game() {
+//   if (playerScore < 5 || computerScore < 5) return oneRound();
+//   if ((playerScore = 5)) return alert("You win!");
+//   if ((computerScore = 5)) return alert("You lose!");
 // }
 
-// game();
+const rockClick = document.querySelector("#rock");
+const paperClick = document.querySelector("#paper");
+const scissorsClick = document.querySelector("#scissors");
 
-// Three butons
-const btn = document.querySelector("#button");
-btn.addEventListener("click", oneRound);
-console.log(btn);
+rockClick.addEventListener("click", () => {
+  input = rock;
+  oneRound();
+});
+
+paperClick.addEventListener("click", () => {
+  input = paper;
+  oneRound();
+});
+
+scissorsClick.addEventListener("click", () => {
+  input = scissors;
+  oneRound();
+});
