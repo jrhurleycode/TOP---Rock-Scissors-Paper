@@ -29,44 +29,54 @@ function oneRound(playerSelection, computerSelection) {
   //Removes default text
   lineOne.textContent = "Player selected: " + playerSelection;
   lineTwo.textContent = "Computer selected: " + computerSelection;
-  lineThree.textContent = "Player score: " + playerScore;
-  lineFour.textContent = "Computer score: " + computerScore;
+
+  function showScores() {
+    lineThree.textContent = "Player score: " + playerScore;
+    lineFour.textContent = "Computer score: " + computerScore;
+  }
   lineFive.textContent = "";
 
   //Player wins round. +1 to score
   if (selections.at(0) === "rock" && selections.at(1) === "scissors") {
     playerScore += 1;
+    showScores();
     lineFive.textContent = "******Good job.  You beat the computer.******";
   }
 
   if (selections.at(0) === "paper" && selections.at(1) === "rock") {
     playerScore += 1;
+    showScores();
     lineFive.textContent = "******Good job.  You beat the computer.******";
   }
 
   if (selections.at(0) === "scissors" && selections.at(1) === "paper") {
     playerScore += 1;
+    showScores();
     lineFive.textContent = "******Good job.  You beat the computer.******";
   }
 
   //Computer wins round.  +1 to score.
   if (selections.at(0) === "rock" && selections.at(1) === "paper") {
     computerScore += 1;
+    showScores();
     lineFive.textContent = "******Sorry, the computer won this round.******";
   }
 
   if (selections.at(0) === "paper" && selections.at(1) === "scissors") {
     computerScore += 1;
+    showScores();
     lineFive.textContent = "******Sorry, the computer won this round.******";
   }
 
   if (selections.at(0) === "scissors" && selections.at(1) === "rock") {
     computerScore += 1;
+    showScores();
     lineFive.textContent = "******Sorry, the computer won this round.******";
   }
 
   //Player and Computer tie.  No points given.
   if (playerSelection === computerSelection) {
+    showScores();
     lineFive.textContent = "******Its a tie! Try again.******";
   }
 }
