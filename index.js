@@ -1,3 +1,4 @@
+//Setting static values
 let playerScore = 0;
 let computerScore = 0;
 let input = "";
@@ -5,113 +6,106 @@ const rock = "rock";
 const paper = "paper";
 const scissors = "scissors";
 
+const container = document.querySelector(".container");
+
+// Buttons
+const rockClick = document.querySelector("#rock");
+const paperClick = document.querySelector("#paper");
+const scissorsClick = document.querySelector("#scissors");
+
+//Message divs
+const divResultsPlayer = container.querySelector("#resultsPlayer");
+const divResultsComputer = container.querySelector("#resultsComputer");
+const divScorePlayer = container.querySelector("#scorePlayer");
+const divScoreComputer = container.querySelector("#scoreComputer");
+const divMessage = container.querySelector("#message");
+const divWin = document.querySelector("#win");
+
 //Computer makes a random selection
 function computerPlay() {
   const pcChoices = [rock, paper, scissors];
   return pcChoices[Math.floor(Math.random() * pcChoices.length)];
 }
 
+function showScores() {
+    divScorePlayer.textContent = "Player score: " + playerScore;
+    divScoreComputer.textContent = "Computer score: " + computerScore;
+}
+
 //One round.
 function oneRound(playerSelection, computerSelection) {
-  playerSelection = input;
-  computerSelection = computerPlay();
-  let selections = [playerSelection, computerSelection];
-
-  //New lines
-  const container = document.querySelector(".container");
-  let lineOne = container.querySelector("#resultsPlayer");
-  let lineTwo = container.querySelector("#resultsComputer");
-  let lineThree = container.querySelector("#scorePlayer");
-  let lineFour = container.querySelector("#scoreComputer");
-  let lineFive = container.querySelector("#message");
-
   //Removes default text
-  lineOne.textContent = "Player selected: " + playerSelection;
-  lineTwo.textContent = "Computer selected: " + computerSelection;
-
-  function showScores() {
-    lineThree.textContent = "Player score: " + playerScore;
-    lineFour.textContent = "Computer score: " + computerScore;
-  }
-  lineFive.textContent = "";
+  divResultsPlayer.textContent = "Player selected: " + playerSelection;
+  divResultsComputer.textContent = "Computer selected: " + computerSelection;
+  
+  divMessage.textContent = "";
 
   //Player wins round. +1 to score
-  if (selections.at(0) === "rock" && selections.at(1) === "scissors") {
+  if (playerSelection === rock && computerSelection === scissors) {
     playerScore += 1;
     showScores();
-    lineFive.textContent = "******Good job.  You beat the computer.******";
+    divMessage.textContent = "******Good job.  You beat the computer.******";
   }
 
-  if (selections.at(0) === "paper" && selections.at(1) === "rock") {
+  if (playerSelection === paper && computerSelection === rock) {
     playerScore += 1;
     showScores();
-    lineFive.textContent = "******Good job.  You beat the computer.******";
+    divMessage.textContent = "******Good job.  You beat the computer.******";
   }
 
-  if (selections.at(0) === "scissors" && selections.at(1) === "paper") {
+  if (playerSelection === scissors && computerSelection === paper) {
     playerScore += 1;
     showScores();
-    lineFive.textContent = "******Good job.  You beat the computer.******";
+    divMessage.textContent = "******Good job.  You beat the computer.******";
   }
 
   //Computer wins round.  +1 to score.
-  if (selections.at(0) === "rock" && selections.at(1) === "paper") {
+  if (playerSelection === rock && computerSelection === paper) {
     computerScore += 1;
     showScores();
-    lineFive.textContent = "******Sorry, the computer won this round.******";
+    divMessage.textContent = "******Sorry, the computer won this round.******";
   }
 
-  if (selections.at(0) === "paper" && selections.at(1) === "scissors") {
+  if (playerSelection === paper && computerSelection === scissors) {
     computerScore += 1;
     showScores();
-    lineFive.textContent = "******Sorry, the computer won this round.******";
+    divMessage.textContent = "******Sorry, the computer won this round.******";
   }
 
-  if (selections.at(0) === "scissors" && selections.at(1) === "rock") {
+  if (playerSelection === scissors && computerSelection === rock) {
     computerScore += 1;
     showScores();
-    lineFive.textContent = "******Sorry, the computer won this round.******";
+    divMessage.textContent = "******Sorry, the computer won this round.******";
   }
 
   //Player and Computer tie.  No points given.
   if (playerSelection === computerSelection) {
     showScores();
-    lineFive.textContent = "******Its a tie! Try again.******";
+    divMessage.textContent = "******Its a tie! Try again.******";
   }
 }
 
-function game(playScore, pcScore) {
-  const win = document.querySelector("#win");
-  const playerWin = (win.textContent = "PLAYER WINS THE GAME");
-  const pcWin = (win.textContent = "COMPUTER WINS THE GAME");
+function game() {
+  oneRound(input, computerPlay());
+  
+  if (playerScore == 5) {divWin.textContent = "PLAYER WINS THE GAME"};
+  if (computerScore == 5) {divWin.textContent = "COMPUTER WINS THE GAME"};
 
-  //check win
-  if (playScore !== 5 || pcScore !== 5) {
-    oneRound;
-  } else if (playScore == 5) {
-    playerWin;
-  } else if (pcScore == 5) {
-    pcWin;
-  }
   console.log("Player score: " + playerScore);
   console.log("Computer score: " + computerScore);
 }
 
-const rockClick = document.querySelector("#rock");
-const paperClick = document.querySelector("#paper");
-const scissorsClick = document.querySelector("#scissors");
-
 rockClick.addEventListener("click", () => {
   input = rock;
-  game(playerScore, computerScore);
+  game();
 });
 
 paperClick.addEventListener("click", () => {
   input = paper;
-  game(playerScore, computerScore);
+  game();
 });
 
 scissorsClick.addEventListener("click", () => {
   input = scissors;
-  game(playerScore, computerScore);
+  game();
 });
