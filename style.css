@@ -1,0 +1,35 @@
+:root {
+  /* CSS HEX */
+  --royal-blue-dark: #071247;
+  --slate-gray: #628395;
+  --rifle-green: #51513d;
+  --gold-web-golden: #ffd500;
+  --platinum: #e7e7e7;
+
+  /* CSS HSL */
+  --royal-blue-dark: hsla(230, 82%, 15%, 1);
+  --slate-gray: hsla(201, 21%, 48%, 1);
+  --rifle-green: hsla(60, 14%, 28%, 1);
+  --gold-web-golden: hsla(50, 100%, 50%, 1);
+  --platinum: hsla(0, 0%, 91%, 1);
+}
+
+/* * {
+  border: 1px red solid;
+} */
+
+body {
+  text-align: center;
+  background-color: var(--royal-blue-dark);
+  color: var(--platinum);
+  font-family: "Roboto", sans-serif;
+}
+
+button {
+  font-size: 5rem;
+  border: var(--platinum) 5px solid;
+  padding: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background: var(--slate-gray);
+}

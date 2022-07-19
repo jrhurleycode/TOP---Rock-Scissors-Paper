@@ -1,7 +1,6 @@
 //Setting static values
 let playerScore = 0;
 let computerScore = 0;
-let input = "";
 const rock = "rock";
 const paper = "paper";
 const scissors = "scissors";
@@ -28,8 +27,8 @@ function computerPlay() {
 }
 
 function showScores() {
-    divScorePlayer.textContent = "Player score: " + playerScore;
-    divScoreComputer.textContent = "Computer score: " + computerScore;
+  divScorePlayer.textContent = "Player score: " + playerScore;
+  divScoreComputer.textContent = "Computer score: " + computerScore;
 }
 
 //One round.
@@ -37,7 +36,7 @@ function oneRound(playerSelection, computerSelection) {
   //Removes default text
   divResultsPlayer.textContent = "Player selected: " + playerSelection;
   divResultsComputer.textContent = "Computer selected: " + computerSelection;
-  
+
   divMessage.textContent = "";
 
   //Player wins round. +1 to score
@@ -85,27 +84,28 @@ function oneRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  oneRound(input, computerPlay());
-  
-  if (playerScore == 5) {divWin.textContent = "PLAYER WINS THE GAME"};
-  if (computerScore == 5) {divWin.textContent = "COMPUTER WINS THE GAME"};
+function game(playerInput) {
+  oneRound(playerInput, computerPlay());
+
+  if (playerScore == 5) {
+    divWin.textContent = "PLAYER WINS THE GAME";
+  }
+  if (computerScore == 5) {
+    divWin.textContent = "COMPUTER WINS THE GAME";
+  }
 
   console.log("Player score: " + playerScore);
   console.log("Computer score: " + computerScore);
 }
 
 rockClick.addEventListener("click", () => {
-  input = rock;
-  game();
+  game(rock);
 });
 
 paperClick.addEventListener("click", () => {
-  input = paper;
-  game();
+  game(paper);
 });
 
 scissorsClick.addEventListener("click", () => {
-  input = scissors;
-  game();
+  game(scissors);
 });
