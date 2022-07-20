@@ -36,7 +36,6 @@ function oneRound(playerSelection, computerSelection) {
   //Removes default text
   divResultsPlayer.textContent = "Player selected: " + playerSelection;
   divResultsComputer.textContent = "Computer selected: " + computerSelection;
-
   divMessage.textContent = "";
 
   //Player wins round. +1 to score

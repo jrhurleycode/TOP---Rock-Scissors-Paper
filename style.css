@@ -1,3 +1,7 @@
+/* * {
+  border: 1px red solid;
+} */
+
 :root {
   /* CSS HEX */
   --royal-blue-dark: #071247;
@@ -14,10 +18,6 @@
   --platinum: hsla(0, 0%, 91%, 1);
 }
 
-/* * {
-  border: 1px red solid;
-} */
-
 body {
   text-align: center;
   background-color: var(--royal-blue-dark);
@@ -32,4 +32,22 @@ button {
   margin-left: 20px;
   margin-right: 20px;
   background: var(--slate-gray);
+}
+
+.container {
+  margin: auto;
+  display: flexbox;
+  align-items: center;
+
+  width: 690px;
+}
+
+#results {
+  display: flex;
+  justify-content: space-around;
+}
+
+#scores {
+  display: flex;
+  justify-content: space-around;
 }
