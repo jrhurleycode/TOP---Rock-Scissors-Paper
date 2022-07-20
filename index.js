@@ -32,20 +32,17 @@ function computerPlay() {
 }
 
 function showScores() {
-  divScorePlayer.innerHTML = "Player score: " + playerScore;
-  divScoreComputer.textContent = "Computer score: " + computerScore;
+  divScorePlayer.innerHTML =
+    "Player score: " + `<span class="numbers">${playerScore}</span>`;
+  divScoreComputer.innerHTML =
+    "Computer score: " + `<span class="numbers">${computerScore}</span>`;
 }
 
 function showResults(playerIcon, computerIcon) {
   divResultsPlayer.innerHTML =
-    "Player selected: " + `<span>${playerIcon}</span>`;
+    "Player selected: " + `<span class="icons">${playerIcon}</span>`;
   divResultsComputer.innerHTML =
-    "Computer selected: " + `<span>${computerIcon}</span>`;
-}
-
-function tie() {
-  if (computerIcon == playerIcon) {
-  }
+    "Computer selected: " + `<span class="icons">${computerIcon}</span>`;
 }
 
 //One round.
@@ -59,21 +56,21 @@ function oneRound(playerSelection, computerSelection) {
     playerScore += 1;
     showScores();
     showResults(rockIcon, scissorsIcon);
-    divMessage.textContent = "******Good job.  You win this round.******";
+    divMessage.textContent = "Good job.  You win this round.";
   }
 
   if (playerSelection === paper && computerSelection === rock) {
     playerScore += 1;
     showScores();
     showResults(paperIcon, rockIcon);
-    divMessage.textContent = "******Good job.  You win this round.******";
+    divMessage.textContent = "Good job.  You win this round.";
   }
 
   if (playerSelection === scissors && computerSelection === paper) {
     playerScore += 1;
     showScores();
     showResults(scissorsIcon, paperIcon);
-    divMessage.textContent = "******Good job.  You win this round.******";
+    divMessage.textContent = "Good job.  You win this round.";
   }
 
   //Computer wins round.  +1 to score. ========================================
@@ -81,40 +78,40 @@ function oneRound(playerSelection, computerSelection) {
     computerScore += 1;
     showScores();
     showResults(rockIcon, paperIcon);
-    divMessage.textContent = "******Sorry, the computer won this round.******";
+    divMessage.textContent = "Sorry, the computer won this round.";
   }
 
   if (playerSelection === paper && computerSelection === scissors) {
     computerScore += 1;
     showScores();
     showResults(paperIcon, scissorsIcon);
-    divMessage.textContent = "******Sorry, the computer won this round.******";
+    divMessage.textContent = "Sorry, the computer won this round.";
   }
 
   if (playerSelection === scissors && computerSelection === rock) {
     computerScore += 1;
     showScores();
     showResults(scissorsIcon, rockIcon);
-    divMessage.textContent = "******Sorry, the computer won this round.******";
+    divMessage.textContent = "Sorry, the computer won this round.";
   }
 
   //Player and Computer tie.  No points given. =======================================
   if (playerSelection === rock && computerSelection === rock) {
     showScores();
     showResults(rockIcon, rockIcon);
-    divMessage.textContent = "******Its a tie! Try again.******";
+    divMessage.textContent = "Its a tie! Try again.";
   }
 
   if (playerSelection === paper && computerSelection === paper) {
     showScores();
     showResults(paperIcon, paperIcon);
-    divMessage.textContent = "******Its a tie! Try again.******";
+    divMessage.textContent = "Its a tie! Try again.";
   }
 
   if (playerSelection === scissors && computerSelection === scissors) {
     showScores();
     showResults(scissorsIcon, scissorsIcon);
-    divMessage.textContent = "******Its a tie! Try again.******";
+    divMessage.textContent = "Its a tie! Try again.";
   }
 }
 
